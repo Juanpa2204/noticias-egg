@@ -1,0 +1,64 @@
+body{
+    width: 1200;
+}
+
+main{
+    width: 100%;
+    background-image: url(../img/FondoZoom_2.jpg);
+    background-size: 1200px 520px;
+    background-repeat: no-repeat;
+    
+}
+.container{
+    width: 940px;
+    margin: 0 auto;
+}
+
+.card{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin:0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+.card h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.card:hover{
+    border-color: #c78c19;
+    transform: scale(1.2);
+}
+.card:active{
+    border-color: #088c19;
+}
+
+.imagen-card{
+    width: 100px;
+    
+}
+
+footer{
+    text-align:center;
+}
+
+.links li{
+    display: inline-table;
+    
+    vertical-align:super;
+    margin:0 1.5%;
+    padding: 30px 20px;
+}
+
+.imagenes{
+    width: 100px;
+}
+
+
