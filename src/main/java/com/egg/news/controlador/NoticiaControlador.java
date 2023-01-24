@@ -32,17 +32,16 @@ public class NoticiaControlador {
     }
     
     @PostMapping("/crear")
-    public String crear(@RequestParam String titulo, String Cuerpo, ModelMap modelo){
+    public String crear(@RequestParam String titulo,@RequestParam String Cuerpo, ModelMap modelo) throws MiException{
         
-        
+        //try{
            noticiaservicio.crearNotica(titulo, Cuerpo);
-           modelo.put("exito", "notica cargada");
-           return "redirect:/";
-//        } catch (MiException e) {
-//            modelo.put("error", e.getMessage());
-//            return "noticia_form.html";
-//        }
-        
+           modelo.put("exito", "notica cargada"); 
+       //} catch (MiException e) {
+         //   modelo.put("error", e.getMessage());
+       //     return "noticia_form.html";
+        //}
+         return "redirect:/";
     }
 }
 

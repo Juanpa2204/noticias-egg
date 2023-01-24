@@ -23,10 +23,11 @@ public class NoticiaServicio {
     
     
     @Transactional
-    public void crearNotica(String titulo, String cuerpo){
+    public void crearNotica(String titulo, String cuerpo) throws MiException{
         
         Noticia noticia = new Noticia();
         
+        //validar(id, titulo, cuerpo); 
         noticia.setId(Math.round(Math.random()*100));
         noticia.setTitulo(titulo);
         noticia.setCuerpo(cuerpo);

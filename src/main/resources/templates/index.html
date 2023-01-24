@@ -46,7 +46,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div class="row row-cols-1 row-cols-md-4 tarjertas">
               <div class="col" th:each="noticia : ${noticias}">
                 <div class="card border-primary mb-3">
-                  <a href="#">
+                  <a th:href="@{/articulos/noticia1}">
                     <div class="card-body">
                       <h2 class="card-tittle text-primay" th:text="${noticia.titulo}"></h2>
                     </div>
