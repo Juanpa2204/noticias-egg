@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+
+    <head>
+        <title>admin crear noticia</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="../static/css/reset.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+</head>
+
+<body>
+    <header>
+        <div class="caja">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" th:href="@{/}">Home</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    admin
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{/admin/carga}">Crear noticia</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider"><a class="dropdown-item" href="#">Modificar
+                                            noticia</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Elminar noticia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <h1><img src="/img/Egg.png">-Noticias</h1>
+        </div>
+    </header>
+    <main>
+        <h2>Ingrese la noticia</h2>
+        
+            <div class="crear-noticia">
+                <form th:action="@{/admin/crear}" method="post">
+                        <div class="form-group my-3">
+                            <span class="texto"><label class="mb-2">cargar noticia</label></span>
+                            <input type="text" class="form-control" name="titulo" placeholder="Título de la noticia">
+                        </div>
+                        <div class="mb-3">
+                            <span class="texto"><label class="form-label texto">cargar cuerpo de la noticia</label></span>
+                            <textarea class="form-control" name="cuerpo" rows="3" placeholder="Cuerpo de la noticia"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
+                    </form>
+                    
+                    <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                        <div class="card-body">
+                            <h5 class="card-title">Exito!</h5>
+                            <p class="card-text" th:text="${exito}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${error}"></p>
+                        </div>
+                    </div>
+                
+                </form>
+            </div>
+    </main>
+    <footer>
+        <ul class="links">
+            <li><a href="https://github.com/Juanpa2204"><img class="imagenes" src="../static/img/GitHub-Emblem.png"
+                        alt=""></a></li>
+            <li><a href="https://www.linkedin.com/in/pablo-rojas-5234771a3/"><img class="imagenes"
+                        src="../static/img/Linkedin-Logo.png" alt=""></a></li>
+            <li><a href="https://eggeducacion.com/es-AR/"><img class="imagenes" src="../static/img/Egg.png" alt=""></a>
+            </li>
+        </ul>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+</html>
