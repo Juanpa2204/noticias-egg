@@ -1,6 +1,6 @@
 body{
-    width: 1520px;
-    height: 620px;
+    width: 2000px;
+    height: 800px;
 
 }
 
@@ -10,19 +10,19 @@ body{
 
 main{
     width: 100%;
-    height: 620px;
+    height: 800px;
     background-image: url(../img/FondoZoom_2.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     
 }
-.tarjertas{
+.tarjetas{
     width: 1000px;
-    margin: 0 auto;
-    padding: 15% 0;
+    margin: 0 15%;
+    padding: 10% 0;
 }
 
-.cards li{
+.card {
     color: #000000;
     display: inline-block;
     text-align: center;
@@ -35,22 +35,18 @@ main{
     border-radius: 10px;
 }
 
-.img-card{
-    width: 180px;
-    height: 100px;
-}
-
-.cards h2{
+.col h2{
+    color: #000000;
     margin-top: 5%;
     font-size: 20px;
     font-weight: bold;
 }
 
-.cards li:hover{
+.col div:hover{
     border-color: #c78c19;
     transform: scale(1.2);
 }
-.cards li:active{
+.col :active{
     border-color: #088c19;
 }
 
@@ -67,6 +63,18 @@ footer{
 
 .imagenes{
     width: 100px;
+}
+
+.formulario{
+    text-align: center;
+    padding-top: 25px ;
+    margin: 0;
+}
+
+.crear-noticia{
+    text-align: center;
+    padding: 50px;
+    margin: 5%;
 }
 
 

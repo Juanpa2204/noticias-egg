@@ -42,6 +42,7 @@ public class NoticiaServicio {
        return noticias;
     }
     
+    
     @Transactional
     public void modificarNoticia(Long id, String titulo, String cuerpo) throws MiException{
         
@@ -70,7 +71,9 @@ public class NoticiaServicio {
             throw new MiException("el cuerpo no puede ser nulo o esta vacio");
         }
 }
-    /*
     
-    */
+    public Noticia getOne(Long id){
+        return noticiaRepositorio.getOne(id);
+    }
+
 }

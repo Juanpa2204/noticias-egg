@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +33,12 @@ public class NoticiaControlador {
     }
     
     @PostMapping("/crear")
-    public String crear(@RequestParam String titulo,@RequestParam String Cuerpo, ModelMap modelo) throws MiException{
+    public String crear(@RequestParam String titulo,@RequestParam String cuerpo, ModelMap modelo) throws MiException{
+        
         
         //try{
-           noticiaservicio.crearNotica(titulo, Cuerpo);
+        System.out.println("cuerpo"+cuerpo);
+           noticiaservicio.crearNotica(titulo, cuerpo);
            modelo.put("exito", "notica cargada"); 
        //} catch (MiException e) {
          //   modelo.put("error", e.getMessage());
@@ -43,6 +46,14 @@ public class NoticiaControlador {
         //}
          return "redirect:/";
     }
+    
+    @GetMapping("/mostrar")
+    public String mostrar(@PathVariable Long id, ModelMap modelo){
+        modelo.put("noticia", noticiaservicio.getOne(id));
+        
+        return "noticia.html"; 
+    }
+    
 }
 
 

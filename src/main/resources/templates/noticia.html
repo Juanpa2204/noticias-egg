@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,10 +43,7 @@
         </div> 
     </header>
     <main>
-        <SECtion class="noticia-1">
-            <h1> QUE ES EGG?</h1>
-            <p></p>
-        </SECtion>
+        <h1 th:action="@{/noticia/mostrar/}__${noticia.id}__"></h1>
     </main>
     <footer>
         <ul class="links">
