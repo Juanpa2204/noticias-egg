@@ -4,8 +4,10 @@
  */
 package com.egg.news.controlador;
 
+import com.egg.news.entidades.Noticia;
 import com.egg.news.excepciones.MiException;
 import com.egg.news.servicios.NoticiaServicio;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,12 +49,15 @@ public class NoticiaControlador {
          return "redirect:/";
     }
     
-    @GetMapping("/mostrar")
-    public String mostrar(@PathVariable Long id, ModelMap modelo){
-        modelo.put("noticia", noticiaservicio.getOne(id));
-        
-        return "noticia.html"; 
+     @GetMapping("/mostrar/{id}")
+    public String mostrar(@PathVariable Long id,String titulo, String cuerpo, ModelMap modelo) {
+       
+        Noticia noticia=noticiaservicio.listarNoticiaId(id);
+        modelo.addAttribute("noticia",noticia);
+      
+        return "noticia.html";
     }
+    
     
 }
 

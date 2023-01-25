@@ -42,6 +42,11 @@ public class NoticiaServicio {
        return noticias;
     }
     
+        public Noticia listarNoticiaId(Long id){
+      
+        Noticia noticias = noticiaRepositorio.findById(id).get();
+       return noticias;
+    }
     
     @Transactional
     public void modificarNoticia(Long id, String titulo, String cuerpo) throws MiException{

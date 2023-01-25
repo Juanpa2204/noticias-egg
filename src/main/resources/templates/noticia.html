@@ -43,7 +43,8 @@
         </div> 
     </header>
     <main>
-        <h1 th:action="@{/noticia/mostrar/}__${noticia.id}__"></h1>
+        <h1 th:text="${noticia.titulo}"></h1>
+        <p th:text="${noticia.cuerpo}"></p>
     </main>
     <footer>
         <ul class="links">
