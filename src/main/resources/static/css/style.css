@@ -16,9 +16,9 @@ main{
     background-repeat: no-repeat;
     
 }
-.tarjetas{
-    margin: 0 15%;
-    padding: 10% 0;
+.container{
+    padding: 50px;
+
 }
 
 .card {
@@ -72,8 +72,8 @@ footer{
 
 .crear-noticia{
     text-align: center;
-    padding: 50px;
-    margin: 5%;
+   
+    margin: auto;
 }
 
 /*pagina lista noticias*/

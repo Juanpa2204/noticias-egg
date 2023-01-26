@@ -36,7 +36,7 @@
                                     <li><a class="dropdown-item" th:href="@{/admin/carga}">Crear noticia</a>
                                     </li>
                                     <li>
-                                        <hr class="dropdown-divider"><a class="dropdown-item" href="#">Modificar
+                                        <hr class="dropdown-divider"><a class="dropdown-item" th:href="@{/admin/lista}">Modificar
                                             noticia</a>
                                     </li>
                                     <li>
@@ -55,15 +55,15 @@
     <main>
         <h2 class="formulario">Ingrese la noticia</h2>
         
-            <div class="crear-noticia">
+            <div class="crear-noticia col-5">
                 <form th:action="@{/admin/crear}" method="post">
-                        <div class="form-group my-3">
-                            <span class="texto"><label class="mb-2">cargar noticia</label></span>
+                        <div class="form-group my-3" >
+                            <span class="texto"><label class="mb-3">cargar noticia</label></span>
                             <input type="text" class="form-control" name="titulo" placeholder="Título de la noticia">
                         </div>
                         <div class="mb-3">
                             <span class="texto"><label class="form-label texto">cargar cuerpo de la noticia</label></span>
-                            <textarea class="form-control" name="cuerpo" rows="3" placeholder="Cuerpo de la noticia"></textarea>
+                            <textarea class="form-control" name="cuerpo" rows="4" placeholder="Cuerpo de la noticia"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
                     </form>

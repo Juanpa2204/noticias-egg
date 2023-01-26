@@ -51,7 +51,7 @@ public class NoticiaServicio {
     @Transactional
     public void modificarNoticia(Long id, String titulo, String cuerpo) throws MiException{
         
-        validar(id, titulo, cuerpo);
+//        validar(id, titulo, cuerpo);
         
         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
         

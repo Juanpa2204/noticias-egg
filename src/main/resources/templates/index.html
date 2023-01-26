@@ -53,10 +53,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </div>
   </header>
   <main>
-    <section class="tarjetas">
       <div class="row row-cols-1 row-cols-md-4 tarjertas">
         <div class="col" th:each="noticia : ${noticias}">
-          <div class="card border-primary mb-3">
+          <div class="card border-primary mb-4">
             <a th:href="@{/admin/mostrar/__${noticia.id}__}">
               <div class="card-body">
                 <h2 class="card-tittle1 text-primay" th:text="${noticia.titulo}"></h2>
@@ -64,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
   <footer>
     <ul class="links">

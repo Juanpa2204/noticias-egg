@@ -67,14 +67,14 @@ public class NoticiaControlador {
         return "noticia_list.html";
     }
     
-    @PostMapping("/modificar/{id}")
+    @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo){
-        modelo.put("titulo", noticiaservicio.getOne(id));
+        modelo.put("noticia", noticiaservicio.getOne(id));
         return "noticia_modificar.html";
     }
     
-    @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, String titulo, String cuerpo) throws MiException{
+    @PostMapping("/modificar/{id}")
+    public String actualizar(@PathVariable Long id, String titulo, String cuerpo, ModelMap modelo) throws MiException{
         
         noticiaservicio.modificarNoticia(id, titulo, cuerpo);
         return "redirect:../lista";
