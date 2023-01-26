@@ -7,6 +7,7 @@ package com.egg.news.controlador;
 import com.egg.news.entidades.Noticia;
 import com.egg.news.excepciones.MiException;
 import com.egg.news.servicios.NoticiaServicio;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,27 @@ public class NoticiaControlador {
         return "noticia.html";
     }
     
+    @GetMapping("lista")
+    public String listar(ModelMap modelo){
+        
+        List<Noticia>noticias=noticiaservicio.listarNoticias();
+        modelo.addAttribute("noticias", noticias);
+        return "noticia_list.html";
+    }
     
+    @PostMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long id, ModelMap modelo){
+        modelo.put("titulo", noticiaservicio.getOne(id));
+        return "noticia_modificar.html";
+    }
+    
+    @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long id, String titulo, String cuerpo) throws MiException{
+        
+        noticiaservicio.modificarNoticia(id, titulo, cuerpo);
+        return "redirect:../lista";
+    }
 }
+
 
 
