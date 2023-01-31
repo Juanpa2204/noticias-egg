@@ -8,7 +8,6 @@ import com.egg.news.entidades.Noticia;
 import com.egg.news.excepciones.MiException;
 import com.egg.news.servicios.NoticiaServicio;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -78,6 +77,12 @@ public class NoticiaControlador {
         
         noticiaservicio.modificarNoticia(id, titulo, cuerpo);
         return "redirect:../lista";
+    }
+    
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id, ModelMap modelo){
+        noticiaservicio.darBaja(id);
+                 return "redirect:/";
     }
 }
 

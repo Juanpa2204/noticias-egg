@@ -63,8 +63,15 @@ public class NoticiaServicio {
         }
     }
     
-    public void darBaja(Long id, String titulo, String cuerpo, Date alta){
-         
+    public void darBaja(Long id){
+        
+         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
+        
+        if (respuesta.isPresent()) {
+            Noticia noticia = respuesta.get();
+           noticia.setBaja(new Date());
+           noticiaRepositorio.save(noticia);
+        }
     }
     
     public void validar(Long id, String titulo, String cuerpo) throws MiException{

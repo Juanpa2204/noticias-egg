@@ -50,13 +50,21 @@
         </div>
     </header>
     <main>
+
+
+
+
+
+
+        
         <section class="tabla">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Id de la noticia</th>
-                        <th scope="col">titulo de la noticia</th>
-                        <th>Acciones</th>
+                        <th scope="col">Titulo de la noticia</th>
+                        <th colsan=2>Acciones</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody th:each="noticia : ${noticias}">
@@ -65,6 +73,9 @@
                         <th th:text="${noticia.titulo}"></th>
                         <td>
                             <a th:href="@{/admin/modificar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i> modificar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/admin/eliminar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i> eliminar</a>
                         </td>
                     </tr>
                 </tbody>
