@@ -10,6 +10,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <header>
         <div class="caja">
@@ -49,21 +50,24 @@
         </div>
     </header>
     <main>
-        <div class="crear-noticia">
+        <div class="crear-noticia col-5">
             <form class="formulario" th:action="@{/admin/modificar/__${noticia.id}__}" method="post">
-                
+
                 <input hidden th:value="${id}" name="id">
 
-                <div class="form-group my-3">
-                    <label class="mb-2">cargar noticia</label>
-                    <input  th:value="${noticia.titulo}" type="text" class="form-control" name="titulo">
+                <div class="form-group my-4">
+                    <label class="mb-3">cargar noticia</label>
+                    <input th:value="${noticia.titulo}" type="text" class="form-control" name="titulo">
                 </div>
                 <div class="mb-3">
                     <label class="form-label texto">cargar cuerpo de la noticia</label>
-                    <textarea th:value="${noticia.cuerpo}" class="form-control" name="cuerpo" rows="3"></textarea>
+                    <textarea th:value="${noticia.cuerpo}" class="form-control" name="cuerpo" rows="20"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
-                <a class="btn btn-primary" th:href="@{/admin/lista}" role="button">Volver</a>
+                <div>
+                    <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
+                    <a class="btn btn-primary" th:href="@{/admin/lista}" role="button">Volver</a>
+                </div>
+                
             </form>
         </div>
     </main>

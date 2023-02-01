@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Data;
 
 @Entity
+@Data
 public class Noticia {
     
     @Id
@@ -22,50 +24,4 @@ public class Noticia {
      @Temporal(TemporalType.DATE)
     private Date baja; 
 
-    public Noticia() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getCuerpo() {
-        return cuerpo;
-    }
-
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
-    }
-
-    public Date getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Date alta) {
-        this.alta = alta;
-    }
-
-    public Date getBaja() {
-        return baja;
-    }
-
-    public void setBaja(Date baja) {
-        this.baja = baja;
-    }
-
-   
-    
-    
 }

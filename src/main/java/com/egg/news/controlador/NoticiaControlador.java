@@ -6,6 +6,7 @@ package com.egg.news.controlador;
 
 import com.egg.news.entidades.Noticia;
 import com.egg.news.excepciones.MiException;
+import com.egg.news.repositorio.NoticiaRepositorio;
 import com.egg.news.servicios.NoticiaServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class NoticiaControlador {
     
     @Autowired
     private NoticiaServicio noticiaservicio;
+    @Autowired
+    private NoticiaRepositorio noticiaRepositorio;
     
     @GetMapping("/carga")
     public String carga(){
@@ -40,7 +43,7 @@ public class NoticiaControlador {
         
         //try{
         System.out.println("cuerpo"+cuerpo);
-           noticiaservicio.crearNotica(titulo, cuerpo);
+           noticiaservicio.crearNoticia(titulo, cuerpo);
            modelo.put("exito", "notica cargada"); 
        //} catch (MiException e) {
          //   modelo.put("error", e.getMessage());
@@ -52,6 +55,8 @@ public class NoticiaControlador {
      @GetMapping("/mostrar/{id}")
     public String mostrar(@PathVariable Long id,String titulo, String cuerpo, ModelMap modelo) {
        
+        
+        
         Noticia noticia=noticiaservicio.listarNoticiaId(id);
         modelo.addAttribute("noticia",noticia);
       

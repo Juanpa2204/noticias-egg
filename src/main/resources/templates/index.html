@@ -52,10 +52,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       <h1><img src="/img/Egg.png">-Noticias</h1>
     </div>
   </header>
-  <main>
-      <div class="row row-cols-1 row-cols-md-4 tarjertas">
-        <div class="col" th:each="noticia : ${noticias}">
-          <div class="card border-primary mb-4">
+  <main class="principal" >
+    
+      <div class="row m-3">
+        <div class="col-sm-6 mb-3 mb-sm-0" th:each="noticia : ${noticias}">
+          <div class="card mb-3">
             <a th:href="@{/admin/mostrar/__${noticia.id}__}">
               <div class="card-body">
                 <h2 class="card-tittle1 text-primay" th:text="${noticia.titulo}"></h2>
@@ -64,6 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
       </div>
     </div>
+  
   </main>
   <footer>
     <ul class="links">
