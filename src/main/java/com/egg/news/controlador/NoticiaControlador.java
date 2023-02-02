@@ -29,8 +29,6 @@ public class NoticiaControlador {
     
     @Autowired
     private NoticiaServicio noticiaservicio;
-    @Autowired
-    private NoticiaRepositorio noticiaRepositorio;
     
     @GetMapping("/carga")
     public String carga(){
@@ -63,12 +61,17 @@ public class NoticiaControlador {
         return "noticia.html";
     }
     
-    @GetMapping("lista")
+    @GetMapping("/lista")
     public String listar(ModelMap modelo){
         
         List<Noticia>noticias=noticiaservicio.listarNoticias();
         modelo.addAttribute("noticias", noticias);
         return "noticia_list.html";
+    }
+    
+     @GetMapping("/registrar")
+    public String registrar(ModelMap modelo){
+        return "registro.html";
     }
     
     @GetMapping("/modificar/{id}")

@@ -34,10 +34,7 @@ public class PortalControlador {
         return "index.html";
     }
     
-    @GetMapping("/registar")
-    public String registrar(){
-        return "registro.html";
-    }
+   
     
      @GetMapping("/login")
     public String login(){

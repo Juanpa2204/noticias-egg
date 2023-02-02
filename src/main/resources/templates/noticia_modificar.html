@@ -60,8 +60,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label texto">cargar cuerpo de la noticia</label>
-                    <textarea th:value="${noticia.cuerpo}" class="form-control cuerpo" name="cuerpo"
-                        rows="10"></textarea>
+                    <textarea type="text" th:inline="text" class="form-control cuerpo" name="cuerpo"
+                        rows="10"> [[${noticia.cuerpo}]]</textarea>
                 </div>
                 <div class="botones">
                     <button type="submit" class="btn">Guardar</button>
