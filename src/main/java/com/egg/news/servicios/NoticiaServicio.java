@@ -26,11 +26,11 @@ public class NoticiaServicio {
     private JavaMailSender mailSender;
 
     @Transactional
-    public void crearNoticia(String titulo, String cuerpo) throws MiException {
+    public void crearNoticia(Long id, String titulo, String cuerpo) throws MiException {
 
         Noticia noticia = new Noticia();
 
-        //validar(id, titulo, cuerpo); 
+        validar(id, titulo, cuerpo);
         noticia.setId(Math.round(Math.random() * 100));
         noticia.setTitulo(titulo);
         noticia.setCuerpo(cuerpo);
@@ -53,17 +53,20 @@ public class NoticiaServicio {
     @Transactional
     public void modificarNoticia(Long id, String titulo, String cuerpo) throws MiException {
 
-//        validar(id, titulo, cuerpo);
+        
         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
+               
             Noticia noticia = respuesta.get();
+             //validar(id, titulo, cuerpo);
             noticia.setTitulo(titulo);
             noticia.setCuerpo(cuerpo);
             noticiaRepositorio.save(noticia);
         }
     }
-
+    
+    @Transactional
     public void darBaja(Long id) {
 
         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
@@ -75,8 +78,11 @@ public class NoticiaServicio {
         }
     }
 
-    public void validar(Long id, String titulo, String cuerpo) throws MiException {
+    private void validar(Long id, String titulo, String cuerpo) throws MiException {
 
+        if (id == null) {
+            throw new MiException("el titulo no puede ser nulo o esta vacio");
+        }
         if (titulo.isEmpty() || titulo == null) {
             throw new MiException("el titulo no puede ser nulo o esta vacio");
         }
@@ -89,9 +95,8 @@ public class NoticiaServicio {
         return noticiaRepositorio.getOne(id);
     }
 
-    String from = "sender@gmail.com";//dirección de correo que hace el envío.
-    String to = "recipient@gmail.com";//dirección de correo que recibe el mail.
-
+    // String from = "sender@gmail.com";//dirección de correo que hace el envío.
+    // String to = "recipient@gmail.com";//dirección de correo que recibe el mail.
     public void sendEmail(String from, String to) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);

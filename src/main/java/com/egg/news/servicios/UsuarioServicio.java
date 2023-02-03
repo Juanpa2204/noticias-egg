@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -27,14 +28,14 @@ public class UsuarioServicio implements UserDetailsService{
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    private void registar(String email, String password, String password2) throws MiException {
+    public void registrar(String email, String password, String password2) throws MiException {
 
         validar(email, password, password2);
 
         Usuario usuario = new Usuario();
 
         usuario.setEmail(email);
-        usuario.setPassword(password);
+        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         usuario.setAlta(new Date());
         usuario.setActivo(Boolean.TRUE);
@@ -47,8 +48,8 @@ public class UsuarioServicio implements UserDetailsService{
         if (email.isEmpty() || email == null) {
             throw new MiException("el email no puede ser nulo o estar vacio");
         }
-        if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("el password no puede ser nulo o estar vacio y debe tener mas de 5 caracteres");
+        if (password.isEmpty() || password == null || password.length() <= 8) {
+            throw new MiException("el password no puede ser nulo o estar vacio y debe tener mas de 8 caracteres");
         }
         if (!password.equals(password2)) {
             throw new MiException("las contraseñas deben ser iguales");
