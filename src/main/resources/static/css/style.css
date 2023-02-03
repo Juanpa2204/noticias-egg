@@ -1,4 +1,4 @@
-body{
+body {
     width: 100%;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -6,42 +6,42 @@ body{
     font-weight: 400;
     font-size: 32px;
     line-height: 150%;
-   
+
 }
 
-.index{
+.index {
     background-image: url(../img/FondoZoom_2.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-header{
+header {
     display: flex;
     flex-flow: wrap;
     justify-content: space-between;
 }
 
-header h1{
+header h1 {
     font-weight: bold;
     font-size: 50px;
     font-style: oblique;
 }
 
-/*index*/ 
+/*index*/
 
-.principal{
+.principal {
     width: 100%;
     height: 850px;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     flex-wrap: wrap;
     padding: 80px;
-   
+
 }
 
-.tarjeta{
+.tarjeta {
     background-color: gainsboro;
     width: 350px;
     height: 250px;
@@ -57,46 +57,49 @@ header h1{
     box-shadow: 10px 5px 5px black;
 }
 
-.tarjeta a{
+.tarjeta a {
     color: #000000;
     text-decoration: none;
 }
 
-.tarjeta:hover{
+.tarjeta:hover {
     border-color: rgb(161, 105, 1);
     transform: scale(1.1);
     background-color: gainsboro;
     opacity: 100%;
 }
 
-.btn-eliminar{
+.btn-eliminar {
     text-align: end;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.links{
+
+.links {
     margin: 0;
 }
 
-.links li{
+.links li {
     display: inline-table;
-    text-align:baseline;
+    text-align: baseline;
     padding: 0 20px 0 0;
 }
 
-.imagenes{
+.imagenes {
     width: 100px;
 }
 
 /*noticia_formulario*/
 
-.formulario, .lista, .pag-modificar, .noticia, .registro{
+.formulario,
+.lista,
+.pag-modificar {
     text-align: center;
-    padding-top: 25px ;
+    padding-top: 25px;
     margin: 0;
     width: 100%;
     height: 850px;
@@ -106,22 +109,22 @@ footer{
     font-weight: bold;
 }
 
-.cuerpo{
+.cuerpo {
     background: rgba(250, 246, 246, 0.5);
     font-weight: bold;
     font-size: 28px;
 }
 
-.crear-noticia{
+.crear-noticia {
     text-align: center;
     margin: auto;
 }
 
-.texto{
+.texto {
     display: inline-block;
 }
 
-.btn{
+.btn {
     background-color: orange;
     width: 100px;
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.4);
@@ -129,34 +132,89 @@ footer{
     margin-right: 20px;
 }
 
-.btn:hover{
+.btn:hover {
     border-color: rgb(161, 105, 1);
     transform: scale(1.2);
     background-color: gainsboro;
 }
 
 /*lista noticias*/
-.table{
+
+.tabla {
+    padding: 5% 15%;
+}
+
+.table {
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.4);
 }
-.filas{
-    background:  rgba(165, 159, 227, 0.5);
+
+.filas {
+    background: rgba(165, 159, 227, 0.5);
 }
-.columna{
+
+.columna {
     background: rgba(250, 246, 246, 0.5);
 }
 
-.enlace a{
-color: gray;
-font-size: 20px;
-text-decoration: none;
+.enlace a {
+    color: gray;
+    font-size: 20px;
+    text-decoration: none;
 }
-.enlace:hover{
+
+.enlace:hover {
     scale: 1.2;
     color: #000000;
 }
 
-/*pagina lista noticias*/
-.tabla{
-    padding: 5% 15%;
+/*pagina registar*/
+
+.registar {
+    display: flex;
+    width: 100%;
+    height: 1024px;
+    background-image: url(/img/FondoZoom.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 80px;
+    align-items: center;
+
+}
+
+.presentacion {
+    width: 40%;
+}
+
+.form-registrarse {
+    width: 60%;
+    height: 70%;
+    text-align: center;
+    border: 1px solid orange;
+    border-radius: 25px;
+    padding: 25px;
+    background: rgba(250, 246, 246, 0.5);
+    display: block;
+    transition: 1.5s;
+}
+
+.form-registrarse:hover {
+    background: rgb(250, 246, 246);
+    scale: 1.1;
+}
+
+.form-group {
+    margin: 30px;
+}
+
+label {
+
+    width: 100%;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.plac-registro {
+   
+    font-weight: bold;
+    font-size: 28px;
 }
