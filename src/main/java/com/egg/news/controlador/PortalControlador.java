@@ -5,13 +5,16 @@
 package com.egg.news.controlador;
 
 import com.egg.news.entidades.Noticia;
+import com.egg.news.entidades.Usuario;
 import com.egg.news.excepciones.MiException;
 import com.egg.news.repositorio.NoticiaRepositorio;
 import com.egg.news.servicios.UsuarioServicio;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -33,27 +36,35 @@ public class PortalControlador {
     @Autowired
     private JavaMailSender mailSender;
 
-    @GetMapping("/")
-    public String index(Model model) {
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/inicio")
+    public String index(HttpSession session ,Model model){
+        
+        Usuario logueado= (Usuario) session.getAttribute("usuariosession");
+        
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard"; 
+        }
+        
         List<Noticia> listaNoticias = new ArrayList();
         listaNoticias = noticiaRepositorio.buscarNoticiasDisponible();
 
         model.addAttribute("noticias", listaNoticias);
-        return "index.html";
+        return "inicio.html";
     }
 
-    @GetMapping("/admin/registrar")
+    @GetMapping("/registrar")
     public String registrar() {
         return "registro.html";
     }
 
-    @PostMapping("/admin/registro")
+    @PostMapping("/registro")
     public String registro(@RequestParam String email, @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
 
         try {
             usuarioServicio.registrar(email, password, password2);
             modelo.put("exito", "usuario registrado correctamente");
-            return "redirect:/";
+            return "redirect:/login";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("email", email); 
@@ -71,8 +82,4 @@ public class PortalControlador {
         return "login.html";
     }
     
-    @GetMapping("/inicio")
-    public String inicio(){
-         return "inicio.html";
-}
 }

@@ -44,7 +44,7 @@ public class NoticiaControlador {
             modelo.put("error", e.getMessage());
             return "noticia_form.html";
         }
-        return "redirect:/";
+        return "redirect:/inicio";
     }
 
     @GetMapping("/mostrar/{id}")
@@ -88,6 +88,6 @@ public class NoticiaControlador {
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
         noticiaservicio.darBaja(id);
         modelo.put("exito", "noticia eliminada"); 
-        return "redirect:/";
+        return "redirect:/inicio";
     }
 }

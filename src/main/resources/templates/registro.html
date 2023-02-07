@@ -22,7 +22,7 @@
       <h1>BIENVENIDOS A <img class="logo" src="/img/Egg.png">-NOTICIAS</h1>
     </SEction>
     <section class="form-registrarse">
-      <form th:action="@{/admin/registro}" method="POST">
+      <form th:action="@{/registro}" method="POST">
         <div class="form-group">
           <label for="Mail">Email*</label>
           <input type="mail" class="form-control plac-registro" name="email" placeholder="ejemplo@gmail.com" th:value="${email}"/>
