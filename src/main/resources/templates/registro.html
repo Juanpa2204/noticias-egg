@@ -37,8 +37,10 @@
           <input type="password" class="form-control plac-registro" name="password2"
             placeholder="reingrese al menos 8 dígitos" th:value="${password2}"/>
         </div>
+        
         <button type="submit" class="link btn">Registrarme</button>
       </form>
+      <button th:href="@{/logincheck}" class="link btn"> Volver</button>
       <div>
         <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
             <div class="card-body">
@@ -56,15 +58,7 @@
     </div>
     </section>
   </main>
-  <footer>
-    <ul class="links">
-      <li><a href="https://github.com/Juanpa2204"><img class="imagenes" src="/img/GitHub-Emblem.png" alt=""></a></li>
-      <li><a href="https://www.linkedin.com/in/pablo-rojas-5234771a3/"><img class="imagenes"
-            src="/img/Linkedin-Logo.png" alt=""></a></li>
-      <li><a href="https://eggeducacion.com/es-AR/"><img class="imagenes" src="/img/Egg.png" alt=""></a></li>
-      <li> © Juan Pablo Rojas</li>
-    </ul>
-  </footer>
+  <footer th:replace= "/fragments/footer :: footer"></footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>

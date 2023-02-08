@@ -97,9 +97,9 @@ footer {
 
 .formulario,
 .lista,
-.pag-modificar {
+.pag-modificar,
+.Dashboard {
     text-align: center;
-    padding-top: 25px;
     margin: 0;
     width: 100%;
     height: 850px;
@@ -126,7 +126,7 @@ footer {
 
 .btn {
     background-color: orange;
-    width: 100px;
+    width: 150px;
     box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.4);
     transition: 1.5s;
     margin-right: 20px;
@@ -214,7 +214,51 @@ label {
 }
 
 .plac-registro {
-   
+
     font-weight: bold;
     font-size: 28px;
+}
+
+/*pag login*/
+
+.login {
+    width: 100%;
+    height: 1000px;
+    background: url(../img/FondoZoom.jpg);
+    background-size: 100% 100%;
+    display: flex;
+}
+
+.presentacion {
+    margin-left: 35px ;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.form-login {
+    width: 50%;
+    height: 40%;
+    text-align: center;
+    border: 1px solid orange;
+    border-radius: 25px;
+    padding: 25px;
+    background: rgba(250, 246, 246, 0.5);
+    display: block;
+    transition: 1.5s;
+    margin-top: 250px;
+    margin-right: 35px;
+}
+
+.form-login:hover {
+    opacity: 1;
+    background: rgb(250, 246, 246);
+    scale: 1.1;
+    margin-right: 50px;
+}
+
+
+.panel {
+    padding: 0 10% 0;
+    text-align: left;
 }
