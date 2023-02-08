@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,15 +20,13 @@ public class NoticiaServicio {
 
     @Autowired
     private NoticiaRepositorio noticiaRepositorio;
-    @Autowired
-    private JavaMailSender mailSender;
 
     @Transactional
     public void crearNoticia(Long id, String titulo, String cuerpo) throws MiException {
 
         Noticia noticia = new Noticia();
 
-        validar(id, titulo, cuerpo);
+        validar(titulo, cuerpo);
         noticia.setId(Math.round(Math.random() * 100));
         noticia.setTitulo(titulo);
         noticia.setCuerpo(cuerpo);
@@ -53,19 +49,18 @@ public class NoticiaServicio {
     @Transactional
     public void modificarNoticia(Long id, String titulo, String cuerpo) throws MiException {
 
-        
         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
-               
+
             Noticia noticia = respuesta.get();
-             //validar(id, titulo, cuerpo);
+            //validar(id, titulo, cuerpo);
             noticia.setTitulo(titulo);
             noticia.setCuerpo(cuerpo);
             noticiaRepositorio.save(noticia);
         }
     }
-    
+
     @Transactional
     public void darBaja(Long id) {
 
@@ -78,11 +73,11 @@ public class NoticiaServicio {
         }
     }
 
-    private void validar(Long id, String titulo, String cuerpo) throws MiException {
+    private void validar(String titulo, String cuerpo) throws MiException {
 
-        if (id == null) {
-            throw new MiException("el titulo no puede ser nulo o esta vacio");
-        }
+        //   if (id == null) {
+        //     throw new MiException("el titulo no puede ser nulo o esta vacio");
+        //}
         if (titulo.isEmpty() || titulo == null) {
             throw new MiException("el titulo no puede ser nulo o esta vacio");
         }
@@ -95,15 +90,4 @@ public class NoticiaServicio {
         return noticiaRepositorio.getOne(id);
     }
 
-    // String from = "sender@gmail.com";//dirección de correo que hace el envío.
-    // String to = "recipient@gmail.com";//dirección de correo que recibe el mail.
-    public void sendEmail(String from, String to) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(from);
-        message.setTo(to);
-        message.setSubject("Asunto del correo");
-        message.setText("Este es un correo automático!");
-        mailSender.send(message);
-
-    }
 }

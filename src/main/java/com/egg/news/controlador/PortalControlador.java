@@ -33,9 +33,6 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @Autowired
-    private JavaMailSender mailSender;
-
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
     public String index(HttpSession session ,Model model){
@@ -43,7 +40,7 @@ public class PortalControlador {
         Usuario logueado= (Usuario) session.getAttribute("usuariosession");
         
         if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin/dashboard"; 
+            return "redirect:/panel/dashboard"; 
         }
         
         List<Noticia> listaNoticias = new ArrayList();
@@ -64,7 +61,7 @@ public class PortalControlador {
         try {
             usuarioServicio.registrar(email, password, password2);
             modelo.put("exito", "usuario registrado correctamente");
-            return "redirect:/login";
+            return "redirect:/";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("email", email); 
@@ -73,13 +70,13 @@ public class PortalControlador {
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login(@RequestParam(required=false) String error, ModelMap modelo){
         
         if (error !=null) {
             modelo.put("error", "usuario o contrasenha invalida!");
         }
-        return "login.html";
+        return "index.html";
     }
     
 }

@@ -9,6 +9,7 @@ import com.egg.news.excepciones.MiException;
 import com.egg.news.servicios.NoticiaServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/admin")
+ //@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class NoticiaControlador {
 
     @Autowired
@@ -82,8 +84,7 @@ public class NoticiaControlador {
         }
            return "redirect:../lista";
     }
-        
-    
+       
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
         noticiaservicio.darBaja(id);
@@ -91,3 +92,4 @@ public class NoticiaControlador {
         return "redirect:/inicio";
     }
 }
+ 

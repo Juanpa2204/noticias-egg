@@ -7,6 +7,7 @@ import com.egg.news.repositorio.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,28 @@ public class UsuarioServicio implements UserDetailsService{
         usuarioRepositorio.save(usuario);
     }
 
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.findAll();
+        return usuarios;
+    }
+    
+       @Transactional
+    public void modificarUsuario(String id, String email, String password) throws MiException {
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+            //validar(id, titulo, cuerpo);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+           
+            usuarioRepositorio.save(usuario);
+        }
+    }
+    
     private void validar(String email, String password, String password2) throws MiException {
 
         if (email.isEmpty() || email == null) {
