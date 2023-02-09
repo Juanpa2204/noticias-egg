@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +41,7 @@ public class PortalControlador {
         Usuario logueado= (Usuario) session.getAttribute("usuariosession");
         
         if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/panel/dashboard"; 
+            return "panel.html"; 
         }
         
         List<Noticia> listaNoticias = new ArrayList();
@@ -78,5 +79,4 @@ public class PortalControlador {
         }
         return "index.html";
     }
-    
 }

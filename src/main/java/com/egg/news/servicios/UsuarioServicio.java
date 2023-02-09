@@ -23,7 +23,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UsuarioServicio implements UserDetailsService{
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -49,23 +49,27 @@ public class UsuarioServicio implements UserDetailsService{
         usuarios = usuarioRepositorio.findAll();
         return usuarios;
     }
-    
-       @Transactional
-    public void modificarUsuario(String id, String email, String password) throws MiException {
 
+    @Transactional
+    public void modificarUsuario(String id, String email, String password, String password2, Rol rol) throws MiException {
+
+        validar(email, password, password2);
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
 
             Usuario usuario = respuesta.get();
-            //validar(id, titulo, cuerpo);
             usuario.setEmail(email);
-            usuario.setPassword(password);
-           
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+            usuario.setRol(rol);
+
             usuarioRepositorio.save(usuario);
         }
     }
-    
+      public Usuario getOne(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
+
     private void validar(String email, String password, String password2) throws MiException {
 
         if (email.isEmpty() || email == null) {
@@ -81,7 +85,7 @@ public class UsuarioServicio implements UserDetailsService{
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email){
+    public UserDetails loadUserByUsername(String email) {
 
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
 
@@ -92,7 +96,7 @@ public class UsuarioServicio implements UserDetailsService{
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
 
             permisos.add(p);
-            
+
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
             HttpSession session = attr.getRequest().getSession(true);
@@ -104,5 +108,5 @@ public class UsuarioServicio implements UserDetailsService{
             return null;
         }
     }
-   
+
 }
