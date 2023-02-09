@@ -40,7 +40,9 @@
         
         <button type="submit" class="link btn">Registrarme</button>
       </form>
-      <button th:href="@{/logincheck}" class="link btn"> Volver</button>
+      <div>
+        <a th:href="@{/}" class="btn"> Volver</a>
+      </div>
       <div>
         <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
             <div class="card-body">
@@ -48,7 +50,6 @@
                 <p class="card-text" th:text="${error}"></p>
             </div>
         </div>
-        
         <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
           <div class="card-body">
               <h5 class="card-title">Exito!</h5>
