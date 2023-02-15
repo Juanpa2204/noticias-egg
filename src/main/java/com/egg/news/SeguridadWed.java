@@ -29,8 +29,8 @@ public class SeguridadWed extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/img/*", "/", "/registrar").permitAll()
-                .antMatchers("/", "/admin/mostrar/*").hasAnyRole("USER", "ADMIN")
-                  .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/", "/admin/mostrar/*").hasAnyRole("USER", "ADMIN","JOURNALIST")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN","JOURNALIST")
                 .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")

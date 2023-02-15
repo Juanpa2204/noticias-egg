@@ -18,23 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 @Controller
 @RequestMapping("/admin")
- //@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class NoticiaControlador {
 
     @Autowired
     private NoticiaServicio noticiaservicio;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @GetMapping("/carga")
     public String carga() {
         return "noticia_form.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @PostMapping("/crear")
     public String crear(@RequestParam(required=false) Long id, @RequestParam String titulo, @RequestParam String cuerpo, ModelMap modelo) throws MiException {
 
@@ -49,6 +46,7 @@ public class NoticiaControlador {
         return "redirect:/inicio";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @GetMapping("/mostrar/{id}")
     public String mostrar(@PathVariable Long id, String titulo, String cuerpo, ModelMap modelo) {
 
@@ -58,6 +56,7 @@ public class NoticiaControlador {
         return "noticia.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @GetMapping("/lista")
     public String listar(ModelMap modelo) {
 
@@ -66,12 +65,14 @@ public class NoticiaControlador {
         return "noticia_list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("noticia", noticiaservicio.getOne(id));
         return "noticia_modificar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_JOURNALIST')")
     @PostMapping("/modificar/{id}")
     public String actualizar(@PathVariable(required=false) Long id, String titulo, String cuerpo, ModelMap modelo) throws MiException {
      
@@ -84,7 +85,8 @@ public class NoticiaControlador {
         }
            return "redirect:../lista";
     }
-       
+    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
         noticiaservicio.darBaja(id);
