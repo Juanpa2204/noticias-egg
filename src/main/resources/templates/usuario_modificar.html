@@ -18,34 +18,29 @@
     <header th:replace="/fragments/header :: header"></header>
     <main class="pag-modificar">
         <div class="crear-noticia col-5">
-         
-
-              
-
-                <div class="form-group my-4">
-                    <label for="Mail">Email*</label>
-                    <input type="mail" class="form-control plac-registro" name="email" 
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="password" class="contrasena">Contraseña*</label>
-                    <input type="password" class="form-control plac-registro" name="password"
-                        placeholder="Ingrese al menos 8 dígitos"/>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="contrasena">Reingrese la Contraseña*</label>
-                    <input type="password" class="form-control plac-registro" name="password2"
-                        placeholder="reingrese al menos 8 dígitos"  />
-                </div>
-                <div>
-                    <label for="tex">seleccione el rol a asignar</label>
+            <div class="form-group my-4">
+                <label for="Mail">Email*</label>
+                <input type="mail" class="form-control plac-registro" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="password" class="contrasena">Contraseña*</label>
+                <input type="password" class="form-control plac-registro" name="password"
+                    placeholder="Ingrese al menos 8 dígitos" />
+            </div>
+            <div class="form-group">
+                <label for="password" class="contrasena">Reingrese la Contraseña*</label>
+                <input type="password" class="form-control plac-registro" name="password2"
+                    placeholder="reingrese al menos 8 dígitos" />
+            </div>
+            <div>
+                <label for="tex">seleccione el rol a asignar</label>
                 <select name="rol">
                     <option value="">User</option>
                     <option value="">Journalist</option>
                     <option value="">Admin</option>
                 </select>
-                </div>
-                <button type="submit" class="link btn">Guardar cambios</button>
+            </div>
+            <button type="submit" class="link btn">Guardar cambios</button>
             </form>
         </div>
     </main>
